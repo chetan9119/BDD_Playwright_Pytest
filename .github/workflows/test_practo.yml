@@ -39,9 +39,9 @@ jobs:
           xvfb-run -a pytest  # Replace this with the command to run your Playwright tests
 
       - name: Run Playwright Tests
-      run: |
-        sudo apt-get install -y xvfb  # Install xvfb if it's not already installed
-        xvfb-run -a pytest --maxfail=2 --disable-warnings --html=reports/report.html --self-contained-html
+        run: |
+          sudo apt-get install -y xvfb  # Install xvfb if it's not already installed
+          xvfb-run -a pytest --maxfail=2 --disable-warnings --html=reports/report.html --self-contained-html
         
 
       - name: Upload Playwright Test Report
