@@ -37,7 +37,7 @@ def enter_valid_credentials(practo_login):
     logger.info("Entering Valid Username and Password")
     email = os.getenv("VALID_USER")
     password = os.getenv("VALID_PASSWORD")
-    practo_login.fill_credentials(username=email, password=password)
+    practo_login.fill_credentials(str({email}), str({password}))
     logger.info("Logging in ...")
     practo_login.submit()
     logger.info("Test Passed : Logged in Successfully !")
