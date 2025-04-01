@@ -41,7 +41,7 @@ def enter_valid_credentials(practo_login):
     logger.info("Logging in ...")
     practo_login.submit()
     logger.info("Test Passed : Logged in Successfully !")
-    practo_login.page.wait_for_load_state("networkidle")
+    practo_login.page.wait_for_timeout(2000)
 
 
 @when("I enter invalid credentials")
