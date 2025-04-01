@@ -8,6 +8,7 @@ class PractoLoginPage:
         self.submit_button = page.locator("button:has-text('Login')")
         self.error_message_1 = page.locator('span#usernameErrorBlock')
         self.error_message_2 = page.locator('span#passwordErrorBlock')
+        self.drp = self.page.locator('span.icon-ic_down_cheveron').nth(4)
 
     def fill_credentials(self, email: str, password: str):
         """Fills in the login form."""
@@ -20,7 +21,7 @@ class PractoLoginPage:
 
         
     def logout(self):
-        self.page.locator('span.icon-ic_down_cheveron').nth(4).click()
+        self.drp.click()
         self.page.get_by_role('link', name="Logout").click()
 
     def submit(self):

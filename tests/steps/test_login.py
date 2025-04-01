@@ -61,8 +61,8 @@ def verify_dashboard(practo_login):
     assert practo_login.is_profile_name_loaded(), "Dashboard did not load"
     logger.info("Test Passed : Profile Section is available")
     practo_login.page.wait_for_timeout(500)
-    logger.info("Logged Out")
     practo_login.logout()
+    logger.info("Logged Out")
 
 @then("I should see an error message")
 def verify_error_message(practo_login):
