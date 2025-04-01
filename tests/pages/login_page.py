@@ -20,10 +20,10 @@ class PractoLoginPage:
 
         
     def logout(self):
+        self.page.locator('span.icon-ic_down_cheveron').nth(4).wait_for(state='visible')
         self.page.locator('span.icon-ic_down_cheveron').nth(4).click()
         self.page.wait_for_timeout(4000)
         self.page.get_by_role('link', name="Logout").click()
-        self.page.wait_for_timeout(2000)
 
     def submit(self):
         """Clicks the login button."""
