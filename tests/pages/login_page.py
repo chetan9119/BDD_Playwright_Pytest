@@ -3,8 +3,8 @@ from playwright.sync_api import Page
 class PractoLoginPage:
     def __init__(self, page: Page):
         self.page = page
-        self.username_input = page.locator("input[name='username'], input[type='email']")  # Verify exact selector
-        self.password_input = page.locator("input[name='password'], input[type='password']")
+        self.username_input = page.locator("input[name='username']")  # Verify exact selector
+        self.password_input = page.locator("input[name='password']")
         self.submit_button = page.locator("button:has-text('Login')")
         self.error_message_1 = page.locator('span#usernameErrorBlock')
         self.error_message_2 = page.locator('span#passwordErrorBlock')
