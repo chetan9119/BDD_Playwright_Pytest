@@ -7,7 +7,7 @@ import pytest_html
 def browser():
     """Launch the Playwright browser instance."""
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # Set headless=True for CI/CD
+        browser = p.chromium.launch(headless=True)  # Set headless=True for CI/CD
         yield browser
         browser.close()
 
