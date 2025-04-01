@@ -1,0 +1,53 @@
+name: Playwright Pytest BDD Automation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install Playwright and Browsers
+        run: |
+          playwright install
+          playwright install-deps
+
+      - name: Run Playwright Tests
+        run: |
+          pytest --maxfail=2 --disable-warnings --html=reports/report.html --self-contained-html
+
+      - name: Upload Playwright Test Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-test-report
+          path: reports/report.html
+          retention-days: 7
+
+      - name: Upload Playwright Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-screenshots
+          path: screenshots/
+          retention-days: 7
