@@ -9,10 +9,10 @@ class PractoLoginPage:
         self.error_message_1 = page.locator('span#usernameErrorBlock')
         self.error_message_2 = page.locator('span#passwordErrorBlock')
 
-    def fill_credentials(self, username, password):
+    def fill_credentials(self, email: str, password: str):
         """Fills in the login form."""
-        self.username_input.type(username)
-        self.password_input.type(password)
+        self.username_input.fill(email)
+        self.password_input.fill(password)
         
     def open(self):
         """Navigates to the Practo homepage."""
