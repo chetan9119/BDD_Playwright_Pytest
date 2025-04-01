@@ -11,8 +11,8 @@ class PractoLoginPage:
 
     def fill_credentials(self, username: str, password: str):
         """Fills in the login form."""
-        self.username_input.fill(username)
-        self.password_input.fill(password)
+        self.username_input.fill(self.username_input, username)
+        self.password_input.fill(self.password_input, password)
         
     def open(self):
         """Navigates to the Practo homepage."""
